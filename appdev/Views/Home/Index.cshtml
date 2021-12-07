@@ -1,12 +1,19 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-   
-</div>
+@if (!User.Identity.IsAuthenticated)
+{
+    <h1>Welcome</h1>
+}
+@if (User.IsInRole("admin"))
+{
+    <h1 style="text-align:center;">Welcome Admin</h1>
+}
+@if (User.IsInRole("manager"))
+{
+    <h1 style="text-align:center;">Welcome Manager</h1>
+}
+@if (User.IsInRole("user"))
+{
+    <h1 style="text-align:center;">Welcome User</h1>
+}
