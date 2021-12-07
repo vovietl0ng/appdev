@@ -1,0 +1,23 @@
+﻿@model appdev.Models.Team
+@{
+    ViewBag.Title = "CreateTeam";
+}
+
+<h2>Create Team</h2>
+@Html.ActionLink("Back", "Team", "Manager", null, new { @class = "btn btn-primary" })
+<br />
+@using (Html.BeginForm("CreateTeam", "Manager", "POST"))
+{
+    <div class="form-group">
+        @Html.Label("Team Name", new { @class = "text-default" })
+        @Html.TextBoxFor(m => m.TeamName, new { @class = "form-default" })
+        @Html.ValidationMessageFor(model => model.TeamName, " *required", new { @class = "text-danger" })
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="Create" />
+        </div>
+    </div>
+}
+

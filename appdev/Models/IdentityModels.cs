@@ -24,7 +24,8 @@ namespace appdev.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
+        public DbSet<UserTeam> UserTeams { get; set; }
+        public DbSet<Team> Teams { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

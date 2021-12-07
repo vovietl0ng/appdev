@@ -1,0 +1,45 @@
+﻿@model List<appdev.Models.Team>
+@{
+    ViewBag.Title = "TeamManagement";
+}
+
+<h2>TeamManagement</h2>
+@*@using (Html.BeginForm("CategoryView", "Staff", "POST"))
+{
+    <div class="form-group">
+        @Html.Label("Search")
+        @Html.TextBox("searchString", null, new { @class = "form-control" })
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+}*@
+@Html.ActionLink("Create", "CreateTeam", "Manager", null, new { @class = "btn btn-primary" })
+@{ int i = 0;
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Team</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lo in Model)
+            {
+                i++;
+                <tr>
+                    <td scope="row">@i</td>
+                    <td scope="row">@lo.TeamName</td>
+                    <td scope="row">
+                        @Html.ActionLink("Delete", "DeleteTeam", "Manager",
+                                  new { id = lo.Id },
+                                  new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Update", "EditTeam", "Manager",
+                                  new { id = lo.Id },
+                                  new { @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

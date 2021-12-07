@@ -1,0 +1,24 @@
+﻿@model appdev.Models.Team
+@{
+    ViewBag.Title = "EditTeam";
+}
+
+<h2>Edit Team</h2>
+@Html.ActionLink("Back", "TeamManagement", "Manager", null, new { @class = "btn btn-primary" })
+<br>
+@using (Html.BeginForm("EditTeam","Manager","POST"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.TeamName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.TeamName, new { @class = "form-control" })
+            <br/>
+            @Html.ValidationMessageFor(model => model.TeamName, " *required", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="Edit" />
+        </div>
+    </div>
+}
